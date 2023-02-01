@@ -39,5 +39,7 @@ func GenerateToken(context *gin.Context) {
 		context.Abort()
 		return
 	}
-	context.JSON(http.StatusOK, gin.H{"token": tokenString})
+
+	context.Header("Authorization", "bearer "+tokenString)
+	context.JSON(http.StatusOK, gin.H{"status": true, "message": "success", "statusCode": 200, "datas": user})
 }

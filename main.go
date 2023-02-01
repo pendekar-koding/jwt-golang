@@ -21,7 +21,7 @@ func initRouter() *gin.Engine {
 	router := gin.Default()
 	api := router.Group("/auth")
 	{
-		api.POST("/token", controllers.GenerateToken)
+		api.POST("/login", controllers.GenerateToken)
 		api.POST("/user/register", controllers.RegisterUser)
 		secured := api.Group("/secured").Use(middlewares.Auth())
 		{
